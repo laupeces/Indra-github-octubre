@@ -7,6 +7,7 @@ const recommendations = [
 
 const dailyPick = document.querySelector("#daily-pick");
 const shuffleButton = document.querySelector("#shuffle-pick");
+const themeToggle = document.querySelector("#theme-toggle");
 const hourHand = document.querySelector("#hour-hand");
 const minuteHand = document.querySelector("#minute-hand");
 const secondHand = document.querySelector("#second-hand");
@@ -15,6 +16,13 @@ let currentRecommendation = 0;
 shuffleButton.addEventListener("click", () => {
   currentRecommendation = (currentRecommendation + 1) % recommendations.length;
   dailyPick.textContent = recommendations[currentRecommendation];
+});
+
+themeToggle.addEventListener("click", () => {
+  const isDark = document.documentElement.dataset.theme !== "dark";
+  document.documentElement.dataset.theme = isDark ? "dark" : "light";
+  themeToggle.setAttribute("aria-pressed", String(isDark));
+  themeToggle.textContent = isDark ? "Modo claro" : "Modo oscuro";
 });
 
 function updateClock() {

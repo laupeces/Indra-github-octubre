@@ -5,6 +5,17 @@
   --paper: #f5f3ed;
   --accent: #c75e3d;
   --line: #d9d8ce;
+  --pick-background: #eeece4;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #e8e5dc;
+  --muted: #b1b8af;
+  --paper: #202721;
+  --accent: #e28765;
+  --line: #424c43;
+  --pick-background: #2b342d;
 }
 
 * {
@@ -40,6 +51,28 @@ body {
 }
 
 .brand span {
+  color: var(--accent);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.theme-toggle {
+  padding: 8px 11px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
   color: var(--accent);
 }
 
@@ -137,7 +170,7 @@ h1 em {
   margin-top: 42px;
   padding: 16px 48px 15px 17px;
   border-left: 2px solid var(--accent);
-  background: #eeece4;
+  background: var(--pick-background);
 }
 
 .pick-label {
@@ -303,6 +336,19 @@ h1 em {
   .site-header {
     height: 70px;
     padding: 0 6%;
+  }
+
+  .header-actions {
+    gap: 12px;
+  }
+
+  .theme-toggle {
+    padding: 7px 8px;
+    font-size: 11px;
+  }
+
+  .header-link {
+    font-size: 11px;
   }
 
   .hero {
