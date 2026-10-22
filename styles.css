@@ -60,6 +60,19 @@ body {
   gap: 24px;
 }
 
+button,
+a,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
 .theme-toggle {
   padding: 8px 11px;
   border: 1px solid var(--line);
@@ -88,6 +101,162 @@ body {
 .menu-strip a span {
   margin-left: 7px;
   color: var(--accent);
+}
+
+.suggestion-trigger {
+  padding: 7px 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.suggestion-trigger:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.suggestion-label-short {
+  display: none;
+}
+
+.suggestion-dialog {
+  width: min(100% - 32px, 520px);
+  max-width: 520px;
+  max-height: min(90vh, 720px);
+  margin: auto;
+  padding: 30px;
+  overflow: auto;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 18px 60px rgb(20 27 22 / 22%);
+}
+
+.suggestion-dialog::backdrop {
+  background: rgb(18 24 20 / 58%);
+}
+
+.dialog-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.dialog-heading .eyebrow {
+  margin: 0;
+}
+
+.dialog-heading h2 {
+  margin: 8px 0 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(25px, 5vw, 32px);
+  line-height: 1.2;
+}
+
+.dialog-close {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.dialog-close:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.dialog-description {
+  margin: 16px 0 24px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+#suggestion-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+#suggestion-text {
+  display: block;
+  width: 100%;
+  min-height: 130px;
+  padding: 12px;
+  resize: vertical;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+#suggestion-text::placeholder {
+  color: var(--muted);
+  opacity: 0.8;
+}
+
+.form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.character-count {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.suggestion-submit {
+  padding: 11px 15px;
+  border: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.suggestion-submit:hover {
+  background: var(--accent);
+}
+
+.suggestion-status {
+  margin: 20px 0 0;
+  padding: 14px;
+  border-left: 2px solid var(--accent);
+  background: var(--pick-background);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.suggestion-status:empty {
+  display: none;
+}
+
+.demo-note {
+  margin: 20px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
 }
 
 .hero {
@@ -339,7 +508,7 @@ h1 em {
   }
 
   .header-actions {
-    gap: 12px;
+    gap: 10px;
   }
 
   .theme-toggle {
@@ -349,6 +518,18 @@ h1 em {
 
   .header-link {
     font-size: 11px;
+  }
+
+  .suggestion-trigger {
+    font-size: 11px;
+  }
+
+  .suggestion-label-long {
+    display: none;
+  }
+
+  .suggestion-label-short {
+    display: inline;
   }
 
   .hero {
@@ -375,6 +556,27 @@ h1 em {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: start;
+  }
+}
+
+@media (max-width: 520px) {
+  .site-header {
+    height: auto;
+    min-height: 70px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .suggestion-dialog {
+    padding: 22px;
   }
 }
 

@@ -17,8 +17,33 @@
     <div class="header-actions">
       <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false">Modo oscuro</button>
       <a class="header-link" href="#carta">Nuestra carta <span aria-hidden="true">↗</span></a>
+      <button class="suggestion-trigger" id="suggestion-trigger" type="button" aria-label="Buzón de sugerencias" aria-haspopup="dialog" aria-controls="suggestion-dialog">
+        <span class="suggestion-label-long">Buzón de sugerencias</span>
+        <span class="suggestion-label-short">Sugerencias</span>
+      </button>
     </div>
   </header>
+
+  <dialog class="suggestion-dialog" id="suggestion-dialog" aria-labelledby="suggestion-title" aria-describedby="suggestion-description">
+    <div class="dialog-heading">
+      <div>
+        <p class="eyebrow">Tu voz cuenta</p>
+        <h2 id="suggestion-title">Buzón de sugerencias</h2>
+      </div>
+      <button class="dialog-close" id="suggestion-close" type="button" aria-label="Cerrar buzón">×</button>
+    </div>
+    <p class="dialog-description" id="suggestion-description">Comparte una idea de forma anónima. No pedimos datos de contacto.</p>
+    <form id="suggestion-form">
+      <label for="suggestion-text">¿Qué te gustaría sugerir?</label>
+      <textarea id="suggestion-text" name="suggestion" rows="5" maxlength="500" required aria-describedby="suggestion-count" placeholder="Escribe tu sugerencia (máximo 500 caracteres)"></textarea>
+      <div class="form-footer">
+        <span class="character-count" id="suggestion-count">0 / 500</span>
+        <button class="suggestion-submit" type="submit">Enviar sugerencia</button>
+      </div>
+    </form>
+    <p class="suggestion-status" id="suggestion-status" role="status" aria-live="polite"></p>
+    <p class="demo-note">Demostración: las sugerencias no se envían ni se guardan.</p>
+  </dialog>
 
   <main id="inicio">
     <section class="hero" aria-labelledby="hero-title">
